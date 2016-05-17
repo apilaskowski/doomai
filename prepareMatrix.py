@@ -12,9 +12,9 @@ def detectPink(img,y,x,n,m):
     imgG=img[1]
     imgB=img[2]
     y1=(imgR.shape[0]/n)*y
-    y2=min(((imgR.shape[0]/n)*(y+1)-1),imgR.shape[0])
+    y2=min(((imgR.shape[0]/n)*(y+1)),imgR.shape[0])
     x1=(imgR.shape[1]/m)*x
-    x2=min(((imgR.shape[1]/m)*(x+1)-1),imgR.shape[1])
+    x2=min(((imgR.shape[1]/m)*(x+1)),imgR.shape[1])
     interestingR=imgR[y1:y2,x1:x2]
     interestingG=imgG[y1:y2,x1:x2]
     interestingB=imgB[y1:y2,x1:x2]
