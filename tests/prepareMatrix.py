@@ -9,9 +9,9 @@ Created on Tue May 17 14:59:04 2016
 import numpy as np
 
 def returnColor(img,y,x,n,m):
-    imgR=img[0]
-    imgG=img[1]
-    imgB=img[2]
+    imgR=img[:,:,0]
+    imgG=img[:,:,1]
+    imgB=img[:,:,2]
     y1=(imgR.shape[0]/n)*y
     y2=min(((imgR.shape[0]/n)*(y+1)),imgR.shape[0])
     x1=(imgR.shape[1]/m)*x
