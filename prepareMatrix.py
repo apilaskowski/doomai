@@ -4,10 +4,11 @@ Created on Tue May 17 14:59:04 2016
 
 @author: Tomasz Sosnowski
 """
+# spawny: -780;400 i -250;400
 
 import numpy as np
 
-def detectPink(img,y,x,n,m):
+def returnColor(img,y,x,n,m):
     imgR=img[0]
     imgG=img[1]
     imgB=img[2]
@@ -21,13 +22,15 @@ def detectPink(img,y,x,n,m):
     rmean=np.mean(interestingR)
     gmean=np.mean(interestingG)
     bmean=np.mean(interestingB)
-    if (rmean>180 and gmean<200 and bmean>130 and bmean<210):
+    if (rmean<50 and gmean<50 and bmean<50):
         return 1
+    if (rmean>200 and gmean>200 and bmean>200):
+        return (-1)
     return 0
 
 def prepareMatrix(img,n,m):
     M = np.zeros((n,m))
     for i in range(0,n):
         for j in range(0,m):
-            M[i,j]=detectPink(img,i,j,n,m)
+            M[i,j]=returnColor(img,i,j,n,m)
     return M
