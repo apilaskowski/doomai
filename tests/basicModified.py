@@ -67,7 +67,7 @@ game.set_doom_game_path("../../scenarios/freedoom2.wad")
 
 # Sets path to additional resources iwad file which is basically your scenario iwad.
 # If not specified default doom2 maps will be used and it's pretty much useles... unless you want to play doom.
-game.set_doom_scenario_path("../../scenarios/basic.wad")
+game.set_doom_scenario_path("../../scenarios/misio.wad")
 
 # Sets map to start (scenario .wad files can contain many maps).
 game.set_doom_map("map01")
