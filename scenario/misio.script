@@ -1,0 +1,52 @@
+#include "Zcommon.acs"
+
+global int 0:reward;
+
+int enemy_id = 10;
+int friend_id = 11;
+
+script 1 OPEN
+{
+    SpawnTarget();
+}
+
+script 2 ENTER
+{
+    ClearInventory();
+    GiveInventory("Chainsaw", 1);
+}
+
+script 4 (void)
+{
+    reward = reward + 100;
+    print(d:reward);
+    Exit_Normal(0);
+}
+
+script 5 (void)
+{
+    reward = reward - 100;
+    print(d:reward);
+    Exit_Normal(0);
+}
+
+function void SpawnTarget(void)
+{
+    int y = 400.0;
+    int x1 = -780.0;
+    int x2 = -250.0;
+    int p = Random(0, 1);
+    Spawn("Revenant", p * x1 + (1-p)*x2, y, 10.0, friend_id, 128);
+    Spawn("BaronOfHell", (1-p) * x1 + p * x2, y, 10.0, enemy_id, 128);
+    // disables movement
+    SetActorProperty(friend_id, APROP_Speed, 0);
+    SetActorProperty(enemy_id, APROP_Speed, 0);
+    // makes it die on one hit
+    SetActorProperty(friend_id, APROP_HEALTH, 1);
+    SetActorProperty(enemy_id, APROP_HEALTH, 1);
+    // makes it ignore the player and attack actor with tid 100
+    Thing_Hate(friend_id, 100, 6);
+    Thing_Hate(enemy_id, 100, 6);
+    SetThingSpecial(friend_id, ACS_ExecuteAlways, 4);
+    SetThingSpecial(enemy_id, ACS_ExecuteAlways, 5);
+}
