@@ -18,14 +18,14 @@ script 2 ENTER
 
 script 4 (void)
 {
-    reward = reward + 100;
+    reward = reward + 100.0;
     print(d:reward);
     Exit_Normal(0);
 }
 
 script 5 (void)
 {
-    reward = reward - 100;
+    reward = reward - 100.0;
     print(d:reward);
     Exit_Normal(0);
 }
